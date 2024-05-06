@@ -1,6 +1,4 @@
-
 package com.example.native_app_test2
-
 
 import android.content.res.AssetManager
 import android.os.Bundle
@@ -16,7 +14,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding!!.root)
 
         // Call the native function to read the matrix
-        readMatrix(assets)
+        val matrixData = readMatrix(assets)
+        binding?.sampleText?.text= matrixData
     }
 
     companion object {
@@ -28,6 +27,6 @@ class MainActivity : AppCompatActivity() {
          * A native method that is implemented by the 'native_app_test1' native library,
          * which is packaged with this application.
          */
-        external fun readMatrix(assetManager: AssetManager)
+        external fun readMatrix(assetManager: AssetManager): String
     }
 }
